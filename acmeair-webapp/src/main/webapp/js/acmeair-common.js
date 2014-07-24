@@ -39,10 +39,32 @@ function updateLoggedInUserWelcome() {
 	}
 }
 
+function updateServerIPWelcome() {
+	dojo.xhrGet({
+		url: 'rest/api/server/queryip',
+		handleAs: "text",
+		load: function(response, ioArgs) {
+			dojo.byId("serverip").innerHTML = 'Request Served by: ' + response;
+		},
+		error: function(response, ioArgs) {
+			alert(response);
+		}
+	});
+
+}
+
+
+function loadCustomerProfileData(userid) {
+
+}
+
+
+
+
 function login() {
 	hideLoginDialog();
 	showLoginWaitDialog();
-	
+
 	var userString = document.getElementById('userId').value;
 	dojo.xhrPost({
 		content : {
@@ -73,7 +95,7 @@ function logout() {
 	if (loggedinuser == null) {
 		return;
 	}
-	
+
 	dojo.xhrGet({
 		content : {
 			login: loggedinuser
