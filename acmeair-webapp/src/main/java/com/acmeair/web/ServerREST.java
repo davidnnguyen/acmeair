@@ -31,14 +31,12 @@ import com.acmeair.service.*;
 @Path("/server")
 @Component
 public class ServerREST {
-
-
 	@GET
 	@Path("/queryip")
 	@Produces("text/plain")
 	public Response getIP() {
 		try {
-			String ipString = InetAddress.getLocalHost().getHostAddress();
+			String ipString = "teststring"; //InetAddress.getLocalHost().getHostAddress();
       return Response.ok(ipString).build();
 		}
 		catch (Exception e) {

@@ -41,16 +41,16 @@ function updateLoggedInUserWelcome() {
 
 function updateServerIPWelcome() {
 	dojo.xhrGet({
-		url: 'rest/api/server/queryip',
-		handleAs: "text",
-		load: function(response, ioArgs) {
-			dojo.byId("serverip").innerHTML = 'Request Served by: ' + response;
-		},
-		error: function(response, ioArgs) {
-			alert(response);
-		}
+			url: 'rest/api/server/queryip',
+			handleAs: "text",
+			load: function(data){
+				dojo.byId("serverIP").innerHTML = 'Served By: ' + data;
+			},
+			error: function(error){
+				dojo.byId("serverIP").innerHTML = 'An unexpected error occured: ' + error;
+			}
 	});
-
+	var deferred = dojo.xhrGet(xhrArgs);
 }
 
 
