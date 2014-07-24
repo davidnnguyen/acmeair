@@ -50,7 +50,6 @@ function updateServerIPWelcome() {
 				dojo.byId("serverIP").innerHTML = 'An unexpected error occured: ' + error;
 			}
 	});
-	var deferred = dojo.xhrGet(xhrArgs);
 }
 
 
