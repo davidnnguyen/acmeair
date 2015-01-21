@@ -24,7 +24,7 @@ var routes = require('./routes');
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', settings.port || 3000);
   if (settings.useDevLogger) {
 	  app.use(express.logger('dev'));
   }
