@@ -23,7 +23,6 @@ var fs = require('fs');
 var logger = log4js.getLogger();
 logger.setLevel('INFO');
 
-var dbSettings = JSON.parse(fs.readFileSync('../settings.json', 'utf8'));
 var loaderSettings = JSON.parse(fs.readFileSync('loader-settings.json', 'utf8'));
 
 var SKIP_DATABASE = false;
@@ -35,7 +34,7 @@ var dbClient = null;
 
 function initializeDatabaseConnections(callback/*(error)*/) {
 	if (!SKIP_DATABASE) {
-		var dbServer = new mongodb.Server(dbSettings.mongoHost, dbSettings.mongoPort, {poolSize: DATABASE_PARALLELISM});
+		var dbServer = new mongodb.Server(loaderSettings.mongoHost, loaderSettings.mongoPort, {poolSize: DATABASE_PARALLELISM});
 		var dbDatabase = new mongodb.Db('acmeair', dbServer, {}).open(function (error, client) {
 			if (error) {
 				callback(error);
